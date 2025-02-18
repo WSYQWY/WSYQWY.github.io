@@ -3,27 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>做我女朋友吧</title>
+    <title>做我女朋友吧！</title>
     <style>
         body {
             background-color: pink;
             text-align: center;
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
         h1 {
             color: white;
-            margin-top: 20%;
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            gap: 20px;
         }
         button {
-            padding: 10px 20px;
-            font-size: 20px;
-            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        #yesButton {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #noButton {
+            background-color: #f44336;
+            color: white;
+            position: absolute;
         }
     </style>
 </head>
 <body>
-    <h1>我喜欢你，做我女朋友吧！</h1>
-    <button onclick="alert('谢谢你！❤️')">愿意</button>
-    <button onclick="alert('我会继续努力的！💪')">考虑一下</button>
+    <h1>做我女朋友吧！</h1>
+    <div class="buttons">
+        <button id="yesButton" onclick="alert('太棒了！❤️')">愿意</button>
+        <button id="noButton">不同意</button>
+    </div>
+
+    <script>
+        const noButton = document.getElementById('noButton');
+
+        // 不同意按钮到处跑
+        noButton.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+        });
+
+        // 禁止点不同意
+        noButton.addEventListener('click', () => {
+            alert('不行哦，你必须点“愿意”！😜');
+        });
+    </script>
 </body>
 </html>
